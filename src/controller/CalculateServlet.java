@@ -25,11 +25,13 @@ public class CalculateServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String parameter = request.getParameter("number");
+		
 		if (parameter != "") {
 			int number = Integer.parseInt(parameter);
 			BigInteger result = calculatorService.calculate(number);
 			request.setAttribute("result", CalculatorService.formatResult(result));
 		}
+		
 		request.setAttribute("history", calculatorService.getHistory());
 		RequestDispatcher rd = request.getRequestDispatcher("calculator.jsp");
 		rd.forward(request, response);

@@ -19,7 +19,7 @@ public class CalculatorService {
 	public BigInteger calculate(int number) {
 		BigInteger result = calculteFactorialTopDown(number);
 		history.add(new Calculation(number,result));
-
+		
 		return result;
 	}
 	
@@ -43,15 +43,18 @@ public class CalculatorService {
 		for (int i = 2; i <= number; i++) {
 			results[i] = (BigInteger.valueOf(i)).multiply(results[i-1]);
 		}
+		
 		return results[number];
 	}
 	
 	public static String formatResult(BigInteger result) {
 		String formattedResult = String.valueOf(result);
+		
 		if (result.compareTo(BigInteger.valueOf(1000)) == 1) {
 			NumberFormat formatter = new DecimalFormat("00.###E0",DecimalFormatSymbols.getInstance(Locale.ROOT));
 			formattedResult = formatter.format(result);
 		}
+		
 		return formattedResult;
 	}
 	
