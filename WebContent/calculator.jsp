@@ -2,15 +2,14 @@
 <%@ page import="java.math.BigInteger"%>
 
 <%@ page import="model.Calculation"%>
-<%@ page import="service.CalculatorService"%>
+<%@ page import="util.Formatting"%>
 
-<%@ page import="java.text.DecimalFormat" %>
-<%@ page import="java.text.DecimalFormatSymbols"%>
-<%@ page import="java.text.NumberFormat"%>
-<%@ page import="java.util.Locale"%>
 <%@ include file="calculator.css"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
@@ -36,8 +35,8 @@
 				<p>
 					<label for="number">Número = </label> <input type="number" min="0"
 						id="number" name="number" value="0"> <input type="submit"
-						value="Calcular"> <br><br>
-					Resultado = ${result}
+						value="Calcular"> <br>
+					<br> Resultado = ${result}
 				</p>
 			</form>
 		</div>
@@ -47,19 +46,21 @@
 				<th>Número</th>
 				<th>Resultado</th>
 			</tr>
-			<%
-			if (request.getAttribute("history") != null) {
-				ArrayList<Calculation> history = (ArrayList<Calculation>) request.getAttribute("history");
-					for (Calculation c : history) {
-						String formattedResult=CalculatorService.formatResult(c.getResult());
-			%>
-			<tr>
-				<td> <%=c.getNumber()%></td>
-				<td title=<%=c.getResult()%>><%=formattedResult%></td>
-			</tr>
-			<%	} 
-			}
-			%>
+			<% ArrayList<Calculation> history = (ArrayList<Calculation>) request.getAttribute("history"); %>
+			<c:if test="${history != null}">
+				<c:forEach var="c" items="${history}">
+					<tr>
+						<td>${c.number}</td>
+						
+						<!-- Getting the JSTL's var 'c' to use in JSP command to format the result -->
+						<% 
+						Calculation c = (Calculation)pageContext.getAttribute("c"); 
+						BigInteger result = c.getResult();
+						%>
+						<td title="${c.result}"><%= Formatting.formatResult(result) %></td>
+					</tr>
+				</c:forEach>
+			</c:if>
 		</table>
 		<p style="text-align: center;">
 			Aplicação web feita para o desafio da vaga de Bolsista do laboratório

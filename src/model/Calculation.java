@@ -26,4 +26,7 @@ public class Calculation {
 	public void setResult(BigInteger result) {
 		this.result = result;
 	}
+	
+	
+	
 }

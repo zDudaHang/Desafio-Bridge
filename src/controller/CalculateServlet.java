@@ -11,7 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import service.CalculatorService;
+import util.Formatting;
 
+
+/** The servlet class for the calculator
+ * @author Maria Eduarda de Melo Hang
+*/
 @WebServlet("/Calculate")
 public class CalculateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -29,7 +34,7 @@ public class CalculateServlet extends HttpServlet {
 		if (parameter != "") {
 			int number = Integer.parseInt(parameter);
 			BigInteger result = calculatorService.calculate(number);
-			request.setAttribute("result", CalculatorService.formatResult(result));
+			request.setAttribute("result", Formatting.formatResult(result));
 		}
 		
 		request.setAttribute("history", calculatorService.getHistory());
