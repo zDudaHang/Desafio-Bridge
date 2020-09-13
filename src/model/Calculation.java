@@ -1,10 +1,12 @@
 package model;
 
+import java.math.BigInteger;
+
 public class Calculation {
 	private int number;
-	private int result;
+	private BigInteger result;
 	
-	public Calculation(int number, int result) {
+	public Calculation(int number, BigInteger result) {
 		this.number = number;
 		this.result = result;
 	}
@@ -13,7 +15,7 @@ public class Calculation {
 		return number;
 	}
 	
-	public int getResult() {
+	public BigInteger getResult() {
 		return result;
 	}
 	
@@ -21,7 +23,7 @@ public class Calculation {
 		this.number = number;
 	}
 	
-	public void setResult(int result) {
+	public void setResult(BigInteger result) {
 		this.result = result;
 	}
 }

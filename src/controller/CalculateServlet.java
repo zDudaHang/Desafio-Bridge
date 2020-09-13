@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.math.BigInteger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,8 +27,8 @@ public class CalculateServlet extends HttpServlet {
 		String parameter = request.getParameter("number");
 		if (parameter != "") {
 			int number = Integer.parseInt(parameter);
-			int result = calculatorService.calculate(number);
-			request.setAttribute("result", result);
+			BigInteger result = calculatorService.calculate(number);
+			request.setAttribute("result", CalculatorService.formatResult(result));
 		}
 		request.setAttribute("history", calculatorService.getHistory());
 		RequestDispatcher rd = request.getRequestDispatcher("calculator.jsp");

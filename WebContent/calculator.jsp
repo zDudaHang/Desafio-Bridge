@@ -1,5 +1,13 @@
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="java.math.BigInteger"%>
+
 <%@ page import="model.Calculation"%>
+<%@ page import="service.CalculatorService"%>
+
+<%@ page import="java.text.DecimalFormat" %>
+<%@ page import="java.text.DecimalFormatSymbols"%>
+<%@ page import="java.text.NumberFormat"%>
+<%@ page import="java.util.Locale"%>
 <%@ include file="calculator.css"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -8,7 +16,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Calculadora</title>
+<title>Calculadora de Fatorial</title>
 </head>
 <body>
 	<div class="grid-container">
@@ -43,10 +51,11 @@
 			if (request.getAttribute("history") != null) {
 				ArrayList<Calculation> history = (ArrayList<Calculation>) request.getAttribute("history");
 					for (Calculation c : history) {
+						String formattedResult=CalculatorService.formatResult(c.getResult());
 			%>
 			<tr>
-				<td><%=c.getNumber()%></td>
-				<td><%=c.getResult()%></td>
+				<td> <%=c.getNumber()%></td>
+				<td title=<%=c.getResult()%>><%=formattedResult%></td>
 			</tr>
 			<%	} 
 			}
