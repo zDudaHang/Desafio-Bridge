@@ -15,6 +15,8 @@ import util.Formatting;
 
 
 /** The servlet class for the calculator
+ *  Purpose: Calculates the factorial of a number, which is obtained through a request from cadastro.jsp, and
+ *  returns the result to the same .jsp
  * @author Maria Eduarda de Melo Hang
 */
 @WebServlet("/Calculate")
@@ -28,17 +30,20 @@ public class CalculateServlet extends HttpServlet {
         this.calculatorService = new CalculatorService();
     }
 
-    /**
-     * @param request
-     * @param response
-     * */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String parameter = request.getParameter("number");
 		
+		// Testing if the number is a empty string
 		if (parameter != "") {
 			int number = Integer.parseInt(parameter);
 			BigInteger result = calculatorService.calculate(number);
-			request.setAttribute("result", Formatting.formatResult(result));
+			
+			// Testing if the result was -1, indicating a invalid entry
+			if (result.compareTo(BigInteger.valueOf(-1)) == 0) {
+				request.setAttribute("result", "Opa ! Você enviou um número negativo");
+			} else {
+				request.setAttribute("result", Formatting.formatResult(result));
+			}
 		}
 		
 		request.setAttribute("history", calculatorService.getHistory());

@@ -5,6 +5,9 @@ import java.util.ArrayList;
 
 import model.Calculation;
 
+/** The servlet class for the calculator
+ * @author Maria Eduarda de Melo Hang
+*/
 public class CalculatorService {
 	private ArrayList<Calculation> history = null;
 	

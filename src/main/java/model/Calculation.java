@@ -2,7 +2,7 @@ package model;
 
 import java.math.BigInteger;
 
-/** The servlet class for the calculator
+/** Represents a calculation with the number and its factorial
  * @author Maria Eduarda de Melo Hang
 */
 public class Calculation {
