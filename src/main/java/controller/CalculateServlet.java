@@ -40,7 +40,7 @@ public class CalculateServlet extends HttpServlet {
 			
 			// Testing if the result was -1, indicating a invalid entry
 			if (result.compareTo(BigInteger.valueOf(-1)) == 0) {
-				request.setAttribute("result", "Opa ! Você enviou um número negativo");
+				request.setAttribute("result", "Opa ! Voce enviou um numero negativo");
 			} else {
 				request.setAttribute("result", Formatting.formatResult(result));
 			}
