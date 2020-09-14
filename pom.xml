@@ -26,9 +26,9 @@
 
 		<!-- JUnit -->
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.3.1</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -60,7 +60,7 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
-					<!-- Setting the context path manually to /  -->
+					<!-- Setting the context path manually to / -->
 					<path>/</path>
 				</configuration>
 			</plugin>
@@ -74,6 +74,13 @@
 					<source>11</source>
 					<target>11</target>
 				</configuration>
+			</plugin>
+
+			<!-- Surefire plugin: execute all unit test during the test phase -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.0</version>
 			</plugin>
 
 
