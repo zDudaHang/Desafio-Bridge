@@ -21,7 +21,7 @@ Aplicação para o desafio do laboratório Bridge na vaga de Dev. Full Stack (Bolsa
 4. Rode o servidor do Tomcat 7:
 ``mvn tomcat7:run``
 5. Acesse a seguinte URL: 
-http://localhost:8080/calculator.jsp
+http://localhost:8080/
 6. Fique à vontade para calcular :smiley:
 7. Executar os testes unitários:
 ``mvn test``
