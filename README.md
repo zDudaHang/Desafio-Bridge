@@ -23,8 +23,6 @@ Aplicação para o desafio do laboratório Bridge na vaga de Dev. Full Stack (Bolsa
 5. Acesse a seguinte URL: 
 http://localhost:8080/
 6. Fique à vontade para calcular :smiley:
-7. Executar os testes unitários:
-``mvn test``
 
 ## Testes unitários
 Foram criados três testes unitários para a classe CalculatorService. Os testes se encontram na seguinte classe: 
