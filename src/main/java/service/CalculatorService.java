@@ -23,7 +23,7 @@ public class CalculatorService {
 	 * @return The factorial of number
 	 * */
 	public BigInteger calculate(int number) {
-		BigInteger result = calculteFactorialTopDown(number);
+		BigInteger result = calculteFactorialBottomUp(number);
 		
 		// Testing if the result is bigger than -1
 		if (result.compareTo(BigInteger.valueOf(-1)) == 1) {
@@ -33,12 +33,12 @@ public class CalculatorService {
 		return result;
 	}
 	
-	/** Calculates the factorial of a number using the top-down algorithm (Dynamic Programming)
+	/** Calculates the factorial of a number using the bottom-up algorithm (Dynamic Programming)
 	 * @param number The number to calculate the factorial
 	 * @return If the number is equal or bigger than 0, returns the factorial of number, else returns -1
 	 * indicating an invalid value for the parameter
 	 * */
-	public BigInteger calculteFactorialTopDown(int number) {
+	public BigInteger calculteFactorialBottomUp(int number) {
 		// If the number is negative, return the -1 to indicate a error
 		if (number < 0) {
 			return BigInteger.valueOf(-1);
