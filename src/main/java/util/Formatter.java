@@ -12,7 +12,7 @@ import java.util.Locale;
  * 
  * @author Maria Eduarda de Melo Hang
  */
-public final class Formatter {
+public class Formatter {
 	private final static NumberFormat FORMATTER = new DecimalFormat("00.###E0",
 			DecimalFormatSymbols.getInstance(Locale.ROOT));
 
