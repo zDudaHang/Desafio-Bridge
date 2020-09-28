@@ -2,7 +2,7 @@
 <%@ page import="java.math.BigInteger"%>
 
 <%@ page import="model.Calculation"%>
-<%@ page import="util.Formatting"%>
+<%@ page import="util.Formatter"%>
 
 <%@ include file="calculator.css"%>
 
@@ -46,18 +46,20 @@
 				<th>Número</th>
 				<th>Resultado</th>
 			</tr>
-			<% ArrayList<Calculation> history = (ArrayList<Calculation>) request.getAttribute("history"); %>
+			<%
+				ArrayList<Calculation> history = (ArrayList<Calculation>) request.getAttribute("history");
+			%>
 			<c:if test="${history != null}">
 				<c:forEach var="c" items="${history}">
 					<tr>
 						<td>${c.number}</td>
 						
 						<!-- Getting the JSTL's var 'c' to use in JSP command to format the result -->
-						<% 
-						Calculation c = (Calculation)pageContext.getAttribute("c"); 
-						BigInteger result = c.getResult();
+						<%
+							Calculation c = (Calculation)pageContext.getAttribute("c"); 
+										BigInteger result = c.getResult();
 						%>
-						<td title="${c.result}"><%= Formatting.formatResult(result) %></td>
+						<td title="${c.result}"><%=Formatter.formatResult(result)%></td>
 					</tr>
 				</c:forEach>
 			</c:if>
